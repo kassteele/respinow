@@ -7,7 +7,7 @@
 fun_create_output <- function(data) {
   data |>
     # Combine splits
-    bind_rows() |> 
+    bind_rows() |>
     # target_end_date corresponds the the date column in the original data
     # Always a Sunday
     rename(
@@ -18,10 +18,10 @@ fun_create_output <- function(data) {
       forecast_date = forecast_date,
       # horizon is the difference (in weeks) between
       # target_end_date (Sunday) and forecast_date - 4 days (Friday -> Sunday)
-      horizon = as.integer(target_end_date - (forecast_date - days(4)))/7L) |> 
-    # Nowcasts should be submitted back until horizon -4 weeks
+      horizon = as.integer(target_end_date - (forecast_date - days(4)))/7L) |>
+    # Nowcasts should be submitted back until horizon -3 weeks
     filter(
-      horizon >= -4L) |>
+      horizon >= -3L) |>
     # Reshape into long format
     pivot_longer(
       cols = starts_with("N_"),
@@ -30,7 +30,7 @@ fun_create_output <- function(data) {
       values_to = "value") |>
     # Reorder colums
     select(
-      location, age_group, forecast_date, target_end_date, horizon, type, quantile, value) 
+      location, age_group, forecast_date, target_end_date, horizon, type, quantile, value)
 }
 
 # Apply fun_create_output() function
