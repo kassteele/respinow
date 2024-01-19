@@ -54,12 +54,12 @@ source(file = "scripts/00_masterscript.R")
 
 # Copy files with forecast_date from output folder to RESPINOW-Hub/submissions folder
 files_from <- list.files(
-  path = here("output"),
+  path = here("output/RIVM-GAM"),
   full.names = TRUE,
   recursive = TRUE,
   pattern = as.character(forecast_date))
 files_to <- file.path(
-  files_from |> dirname() |> str_replace("output", "RESPINOW-Hub/submissions"),
+  files_from |> dirname() |> str_replace("output/RIVM-GAM", "RESPINOW-Hub/submissions"),
   "RIVM-GAM",
   files_from |> basename())
 file.copy(
