@@ -29,5 +29,5 @@ fun_import_raw_data <- function(url) {
 
 # Apply fun_import_raw_data()
 data_icosari_sari_raw <- fun_import_raw_data("icosari/sari/reporting_triangle-icosari-sari-preprocessed.csv")
-data_survstat_infl_raw <- fun_import_raw_data("survstat/influenza/reporting_triangle-survstat-influenza-preprocessed.csv")
+data_survstat_influenza_raw <- fun_import_raw_data("survstat/influenza/reporting_triangle-survstat-influenza-preprocessed.csv")
 data_survstat_rsv_raw <- fun_import_raw_data("survstat/rsv/reporting_triangle-survstat-rsv-preprocessed.csv")

@@ -22,7 +22,7 @@
 # # Show if there is any data for locations and age groups
 # # Provides information to filter on
 # data_icosari_sari_raw |> fun_any_data()
-# data_survstat_infl_raw |> fun_any_data()
+# data_survstat_influenza_raw |> fun_any_data()
 # data_survstat_pneu_raw |> fun_any_data()
 # data_survstat_rsv_raw |> fun_any_data()
 
@@ -32,7 +32,7 @@ data_icosari_sari_raw <- data_icosari_sari_raw |>
     age_group == "00+")
 
 # As is
-data_survstat_infl_raw <- data_survstat_infl_raw
+data_survstat_influenza_raw <- data_survstat_influenza_raw
 
 # # As is
 # data_survstat_pneu_raw <- data_survstat_pneu_raw

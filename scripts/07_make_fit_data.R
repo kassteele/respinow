@@ -24,5 +24,5 @@ fun_make_fit_data <- function(data, forecast_date) {
 # Apply fun_make_fit_data()
 # SurvStat data is one week ahead
 data_icosari_sari_fit <- data_icosari_sari |> fun_make_fit_data(forecast_date)
-data_survstat_infl_fit <- data_survstat_infl |> fun_make_fit_data(forecast_date + weeks(1))
+data_survstat_influenza_fit <- data_survstat_influenza |> fun_make_fit_data(forecast_date + weeks(1))
 data_survstat_rsv_fit <- data_survstat_rsv |> fun_make_fit_data(forecast_date + weeks(1))

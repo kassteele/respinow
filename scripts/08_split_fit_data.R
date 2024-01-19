@@ -15,5 +15,5 @@ fun_split_fit_data <- function(data) {
 
 # Apply fun_split_fit_data()
 data_icosari_sari_split <- data_icosari_sari_fit |> fun_split_fit_data()
-data_survstat_infl_split <- data_survstat_infl_fit |> fun_split_fit_data()
+data_survstat_influenza_split <- data_survstat_influenza_fit |> fun_split_fit_data()
 data_survstat_rsv_split <- data_survstat_rsv_fit |> fun_split_fit_data()

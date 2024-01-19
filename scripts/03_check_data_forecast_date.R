@@ -15,5 +15,5 @@ fun_check_dates <- function(data, forecast_date) {
 # Apply fun_check_dates()
 # SurvStat data is one week ahead
 data_icosari_sari_raw |> fun_check_dates(forecast_date)
-data_survstat_infl_raw |> fun_check_dates(forecast_date + weeks(1))
+data_survstat_influenza_raw |> fun_check_dates(forecast_date + weeks(1))
 data_survstat_rsv_raw |> fun_check_dates(forecast_date + weeks(1))

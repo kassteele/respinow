@@ -106,9 +106,9 @@ nowcast_icosari_sari_split <- map2(
   .x = data_icosari_sari_split,
   .y = fit_icosari_sari_split,
   .f = \(data, fit) fun_make_nowcast(data, fit, forecast_date))
-nowcast_survstat_infl_split <- map2(
-  .x = data_survstat_infl_split,
-  .y = fit_survstat_infl_split,
+nowcast_survstat_influenza_split <- map2(
+  .x = data_survstat_influenza_split,
+  .y = fit_survstat_influenza_split,
   .f = \(data, fit) fun_make_nowcast(data, fit, forecast_date + weeks(1)))
 nowcast_survstat_rsv_split <- map2(
   .x = data_survstat_rsv_split,
