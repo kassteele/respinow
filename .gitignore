@@ -7,3 +7,4 @@ scripts/15_plot_epicurves.R
 automation/send_e-mail.R
 automation/automated_submission.log
 RESPINOW-Hub/
+output/
