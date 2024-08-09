@@ -10,9 +10,10 @@ fun_check_dates <- function(data, forecast_date) {
   is_consistant <- last_date == forecast_date - days(4)
   str_glue("{data_name} last date {last_date} is {if_else(is_consistant, '', 'NOT ')}consistant with forecast date {forecast_date}") |>
     message()
+  return(is_consistant)
 }
 
 # Apply fun_check_dates()
 # SurvStat data is one week ahead
-data_icosari_sari_raw |> fun_check_dates(forecast_date)
-data_survstat_influenza_raw |> fun_check_dates(forecast_date + weeks(1))
+is_consistent_icosari_sari <- data_icosari_sari_raw |> fun_check_dates(forecast_date)
+is_consistent_survstat_influenza <- data_survstat_influenza_raw |> fun_check_dates(forecast_date + weeks(1))
