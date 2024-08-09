@@ -36,4 +36,3 @@ fun_create_output <- function(data) {
 # Apply fun_create_output() function
 output_icosari_sari <- nowcast_icosari_sari_split |> fun_create_output()
 output_survstat_influenza <- nowcast_survstat_influenza_split |> fun_create_output()
-output_survstat_rsv <- nowcast_survstat_rsv_split |> fun_create_output()
