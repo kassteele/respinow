@@ -4,10 +4,10 @@
 
 # Make the nowcasts based on the model fits
 fun_make_nowcast <- function(data, fit, forecast_date) {
-  
+
   # Return nothing if there is no fit
   if (is.null(fit)) return(NULL)
-  
+
   # Filter records outside and inside the reporting triangle
   # Outside: for these records we are going to predict the counts
   # Inside: these records are needed for the already reported counts,
@@ -19,16 +19,16 @@ fun_make_nowcast <- function(data, fit, forecast_date) {
   data_inside_triangle <- data |>
     filter(
       !is.na(n_rep) & date %in% (data_outside_triangle |> pull(date) |> unique()))
-  
+
   # Construct the corresponding model matrix
   X <- predict(
     object = fit,
     newdata = data_outside_triangle,
     type = "lpmatrix")
-  
+
   # Seed seed
   set.seed(1)
-  
+
   # Extract coefficients and overdispersion parameter alpha
   # - beta is sampled from a multivariate normal distribution
   # - alpha is fixed
@@ -37,11 +37,11 @@ fun_make_nowcast <- function(data, fit, forecast_date) {
     mu = coef(fit),
     V = vcov(fit))
   alpha <- fit$sig2 - 1
-  
+
   # The expected number of counts follows from the model matrix X and beta
   # This is an nrow(X) x n_sim matrix
   mu <- exp(X %*% t(beta))
-  
+
   # Counts outside the reporting triangle are sampled from
   # the predictive distribution, i.e. negative binomial
   #
@@ -63,7 +63,7 @@ fun_make_nowcast <- function(data, fit, forecast_date) {
         matrix(
           nrow = n(),
           ncol = n_sim))
-  
+
   # Row-bind records inside and outside the reporting triangle
   # This automatically replicates n_rep inside the reporting triangle n_sim times
   # Arrange records as in the original data
@@ -72,19 +72,19 @@ fun_make_nowcast <- function(data, fit, forecast_date) {
     data_outside_triangle) |>
     arrange(
       location, age_group, date, delay)
-  
+
   # Summarise Monte Carlo samples
-  data_nowcast <- data_nowcast |> 
+  data_nowcast <- data_nowcast |>
     # 1. Summarise n_rep by location, age_group and date
     #    i.e. sum over the delays, but still keep the Monte Carlo samples
     group_by(
-      location, age_group, date) |> 
+      location, age_group, date) |>
     reframe(
-      N = n_rep |> colSums()) |> 
+      N = n_rep |> colSums()) |>
     # 2. Calculate the statistics by location, age_group and date
     #    i.e. summarise the Monte Carlo samples into single statistics
     group_by(
-      location, age_group, date) |> 
+      location, age_group, date) |>
     summarise(
       N_mean_NA = N |> mean() |> round(),
       N_quantile_0.025 = N |> quantile(0.025) |> round(),
@@ -95,7 +95,7 @@ fun_make_nowcast <- function(data, fit, forecast_date) {
       N_quantile_0.9   = N |> quantile(0.9) |> round(),
       N_quantile_0.975 = N |> quantile(0.975) |> round(),
       .groups = "drop")
-  
+
   # Return output
   return(data_nowcast)
 }
@@ -109,8 +109,4 @@ nowcast_icosari_sari_split <- map2(
 nowcast_survstat_influenza_split <- map2(
   .x = data_survstat_influenza_split,
   .y = fit_survstat_influenza_split,
-  .f = \(data, fit) fun_make_nowcast(data, fit, forecast_date + weeks(1)))
-nowcast_survstat_rsv_split <- map2(
-  .x = data_survstat_rsv_split,
-  .y = fit_survstat_rsv_split,
   .f = \(data, fit) fun_make_nowcast(data, fit, forecast_date + weeks(1)))
