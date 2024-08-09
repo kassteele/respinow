@@ -6,12 +6,11 @@
 library(cronR)
 
 # Add cron job
-# This job runs on server rs4.rivm.nl
 # Log will be added in same dir as automated_submission.R
 cron_add(
   command = cron_rscript(
-    rscript = "/home/kasstvdj/Scripts/respinow/automation/automated_submission.R",
-    workdir = "/home/kasstvdj/Scripts/respinow",
+    rscript = "~/Surfdrive/R_topics/nowcasting/Github_repositories/respinow/automation/automated_submission.R",
+    workdir = "~/Surfdrive/R_topics/nowcasting/Github_repositories/respinow",
     log_append = FALSE),
   frequency = "daily",
   days_of_week = 5,
