@@ -22,4 +22,4 @@ export_csv_file <- function(data, path) {
 # Apply export_csv_file() function
 output_icosari_sari |> export_csv_file(path = "RIVM-GAM")
 output_survstat_influenza |> export_csv_file(path = "RIVM-GAM")
-output_survstat_rsv |> export_csv_file(path = "RIVM-GAM")
+# output_survstat_rsv |> export_csv_file(path = "RIVM-GAM")
