@@ -11,9 +11,8 @@ fun_split_fit_data <- function(data) {
     DE_00    = data |> filter(location == "DE" & age_group == "00+"),
     DE_not00 = data |> filter(location == "DE" & age_group != "00+"),
     notDE_00 = data |> filter(location != "DE" & age_group == "00+"))
-}  
+}
 
 # Apply fun_split_fit_data()
 data_icosari_sari_split <- data_icosari_sari_fit |> fun_split_fit_data()
 data_survstat_influenza_split <- data_survstat_influenza_fit |> fun_split_fit_data()
-data_survstat_rsv_split <- data_survstat_rsv_fit |> fun_split_fit_data()

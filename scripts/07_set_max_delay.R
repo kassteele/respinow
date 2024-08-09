@@ -12,7 +12,7 @@ fun_set_max_delay <- function(data) {
       sum(x, na.rm = TRUE)
     }
   }
-  
+
   # Set a maximum delay to a given value: max_delay (see script 01_initialize.R)
   # This is sometime needed if there are very long delays present
   # Once set, aggregate all delays >= max_delay into delay = max_delay
@@ -29,7 +29,7 @@ fun_set_max_delay <- function(data) {
     summarise(
       n_true = sum(n_true),
       n_rep = sum_na(n_rep),
-      .groups = "drop") |> 
+      .groups = "drop") |>
     # Complete reporting matrix by date and delay
     # This sets n_true and n_rep to NA outside the reporting triangle
     # We need this explicit NA's to make the nowcasts
@@ -40,4 +40,3 @@ fun_set_max_delay <- function(data) {
 # Apply fun_set_max_delay()
 data_icosari_sari <- data_icosari_sari |> fun_set_max_delay()
 data_survstat_influenza <- data_survstat_influenza |> fun_set_max_delay()
-data_survstat_rsv <- data_survstat_rsv |> fun_set_max_delay()
