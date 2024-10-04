@@ -9,7 +9,8 @@ library(stringr)
 # Path of the automation script
 # Get user home dir, because ~ will not work from the Linux command line
 user_home <- Sys.getenv("HOME")
-automation_script <- file.path(user_home, "Surfdrive/R_topics/nowcasting/Github_repositories/respinow/automation/automated_submission.R")
+# automation_script <- file.path(user_home, "Surfdrive/R_topics/nowcasting/Github_repositories/respinow/automation/automated_submission.R")
+automation_script <- file.path(user_home, "Projects/respinow/automation/automated_submission.R")
 automation_dir <- dirname(automation_script)
 
 # Add cron job
