@@ -13,8 +13,9 @@ Sys.setlocale(category = "LC_TIME", locale = "en_US.UTF-8")
 options(lubridate.week.start = 1)
 
 # Set maximum delay (weeks)
+# This comes from the data on the hub
 # Also see scripts 04_clean_data and 07_set_max_delay.R
-max_delay <- 10L
+max_delay <- 4L
 
 # Set the number of weeks back to be used for fitting, especially for
 # the estimation of the delay distribution

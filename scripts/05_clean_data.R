@@ -10,20 +10,6 @@ fun_general_cleaning <- function(data) {
       -c(year, week)) |>
     # Mutations
     mutate(
-      # Sum columns value_10w and value_>10w
-      # We do this because we would have expected an NA for value_>10w
-      # at the 11th row from the bottom, but this is not the case... (why?)
-      # Column value_10w now becomes value_>=10w
-      value_10w = case_when(
-        !is.na(value_10w) & !is.na(`value_>10w`) ~ value_10w + `value_>10w`,
-        !is.na(value_10w) & is.na(`value_>10w`) ~ value_10w,
-        is.na(value_10w) & is.na(`value_>10w`) ~ NA_real_),
-      `value_>10w` = NULL,
-      # # Data are collected from Monday to Sunday
-      # # The given date is the date of that Sunday
-      # # We find this is a very confusing convention
-      # # Therefore, set the date to the Monday of that week (6 days earlier)
-      # date = date - days(6L),
       # Location and age group as factors, with levels in given order
       location = location |> fct_inorder(),
       age_group = age_group |> fct_inorder()) |>

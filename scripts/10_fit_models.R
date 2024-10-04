@@ -13,7 +13,7 @@ fun_fit_model_split <- list(
     bam(
       formula = n_rep ~
         s(date_trans, bs = "ps", k = 20) +
-        s(delay_trans, bs = "ps", k = 10) +
+        s(delay_trans, bs = "ps", k = 5) +
         s(I_max_delay, bs = "re"),
       family = quasipoisson,
       data = data,
@@ -26,7 +26,7 @@ fun_fit_model_split <- list(
     bam(
       formula = n_rep ~
         s(date_trans, bs = "ps", k = 20) +
-        s(delay_trans, bs = "ps", k = 10) +
+        s(delay_trans, bs = "ps", k = 5) +
         s(I_max_delay, bs = "re") +
         s(age_group, bs = "re") +
         ti(age_group, date_trans, bs = c("re", "ps")) +
@@ -43,7 +43,7 @@ fun_fit_model_split <- list(
     bam(
       formula = n_rep ~
         s(date_trans, bs = "ps", k = 20) +
-        s(delay_trans, bs = "ps", k = 10) +
+        s(delay_trans, bs = "ps", k = 5) +
         s(I_max_delay, bs = "re") +
         s(location, bs = "re") +
         ti(location, date_trans, bs = c("re", "ps")) +
