@@ -4,7 +4,6 @@
 .Ruserdata
 scripts/14_plot_reporting_triangles.R
 scripts/15_plot_epicurves.R
-RESPINOW-Hub/
 output/
 data/
 automation/automated_submission.log
