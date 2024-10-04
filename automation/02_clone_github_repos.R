@@ -41,3 +41,6 @@ if (!any(str_detect(string = system("gh auth status", intern = TRUE), pattern = 
   # The output should say you are logged in to github.com
   system("gh auth status")
 }
+
+# Set R working dir to project_folder
+setwd(dir = project_folder)
