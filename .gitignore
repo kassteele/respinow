@@ -7,4 +7,5 @@ scripts/15_plot_epicurves.R
 RESPINOW-Hub/
 output/
 data/
-automation/
+automation/automated_submission.log
+automation/10_send_telegram_message.R
