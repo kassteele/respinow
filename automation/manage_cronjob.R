@@ -23,7 +23,7 @@ cron_add(
     log_append = FALSE),
   frequency = "daily",
   days_of_week = 5,
-  at = "10:00",
+  at = "7:00",
   id = "respinow",
   ask = FALSE)
 
