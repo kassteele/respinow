@@ -10,20 +10,21 @@ fun_fit_model_split <- list(
   # DE_00
   function(data) {
     if (nrow(data) == 0) return(NULL)
-    bam(
+    gam(
       formula = n_rep ~
         s(date_trans, bs = "ps", k = 20) +
         s(delay_trans, bs = "ps", k = 5) +
         s(I_max_delay, bs = "re"),
       family = quasipoisson,
       data = data,
-      select = TRUE,
-      discrete = TRUE)
+      method = "REML",
+      optimiser = c("efs", "newton"),
+      select = TRUE)
   },
   # DE_not00
   function(data) {
     if (nrow(data) == 0) return(NULL)
-    bam(
+    gam(
       formula = n_rep ~
         s(date_trans, bs = "ps", k = 20) +
         s(delay_trans, bs = "ps", k = 5) +
@@ -34,13 +35,14 @@ fun_fit_model_split <- list(
         ti(age_group, I_max_delay, bs = c("re", "re")),
       family = quasipoisson,
       data = data,
-      select = TRUE,
-      discrete = TRUE)
+      method = "REML",
+      optimiser = c("efs", "newton"),
+      select = TRUE)
   },
   # notDE_00
   function(data) {
     if (nrow(data) == 0) return(NULL)
-    bam(
+    gam(
       formula = n_rep ~
         s(date_trans, bs = "ps", k = 20) +
         s(delay_trans, bs = "ps", k = 5) +
@@ -51,10 +53,12 @@ fun_fit_model_split <- list(
         ti(location, I_max_delay, bs = c("re", "re")),
       family = quasipoisson,
       data = data,
-      select = TRUE,
-      discrete = TRUE)
+      method = "REML",
+      optimiser = c("efs", "newton"),
+      select = TRUE)
   }
 )
+
 # Apply fun_fit_model_split() function
 fit_icosari_sari_split <- map2(
   .x = data_icosari_sari_split,
