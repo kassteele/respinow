@@ -9,7 +9,9 @@
 
 # 2. Clone the fork (a.k.a origin) into local_folder on your machine
 #    Only do this if the folder does not exist
-if (!file.exists(file.path(local_folder, repos_name))) {
+if (!dir.exists(file.path(local_folder, repos_name))) {
+  # Create folder
+  dir.create(path = file.path(local_folder, repos_name), recursive = TRUE)
   # Set R working dir to local_folder
   setwd(dir = local_folder)
   # Clone fork
