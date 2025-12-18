@@ -24,8 +24,9 @@ fun_any_data <- function(data) {
 # Provides information to filter on
 data_icosari_sari_raw |> fun_any_data()
 data_survstat_influenza_raw |> fun_any_data()
+data_survstat_rsv_raw |> fun_any_data()
 
 # As is
 data_icosari_sari_raw <- data_icosari_sari_raw
 data_survstat_influenza_raw <- data_survstat_influenza_raw
-
+data_survstat_rsv_raw <- data_survstat_rsv_raw

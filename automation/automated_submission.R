@@ -12,7 +12,7 @@ repeat {
   source(file = "scripts/03_check_data_forecast_date.R")
 
   # Depending on consistancy and time of day
-  if (is_consistent_icosari_sari & is_consistent_survstat_influenza) {
+  if (is_consistent_icosari_sari & is_consistent_survstat_influenza & is_consistent_survstat_rsv) {
     # If consistent, break the loop and run submission masterscript
     break
   } else if (hour(now()) < 17) {
