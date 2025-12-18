@@ -35,3 +35,4 @@ fun_general_cleaning <- function(data) {
 # Apply fun_general_cleaning()
 data_icosari_sari <- data_icosari_sari_raw |> fun_general_cleaning()
 data_survstat_influenza <- data_survstat_influenza_raw |> fun_general_cleaning()
+data_survstat_rsv <- data_survstat_rsv_raw |> fun_general_cleaning()

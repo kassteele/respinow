@@ -40,3 +40,4 @@ fun_set_max_delay <- function(data) {
 # Apply fun_set_max_delay()
 data_icosari_sari <- data_icosari_sari |> fun_set_max_delay()
 data_survstat_influenza <- data_survstat_influenza |> fun_set_max_delay()
+data_survstat_rsv <- data_survstat_rsv |> fun_set_max_delay()

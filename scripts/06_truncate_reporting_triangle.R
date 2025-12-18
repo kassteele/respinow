@@ -22,3 +22,4 @@ fun_truncate_reporting_triangle <- function(data, forecast_date) {
 # SurvStat data is one week ahead
 data_icosari_sari <- data_icosari_sari |> fun_truncate_reporting_triangle(forecast_date)
 data_survstat_influenza <- data_survstat_influenza |> fun_truncate_reporting_triangle(forecast_date + weeks(1))
+data_survstat_rsv <- data_survstat_rsv|> fun_truncate_reporting_triangle(forecast_date + weeks(1))
