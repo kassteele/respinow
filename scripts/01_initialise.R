@@ -5,9 +5,15 @@
 # Load packages
 library(tidyverse)
 library(mgcv)
+library(furrr)
 
 # Set time locale to English
 Sys.setlocale(category = "LC_TIME", locale = "en_US.UTF-8")
+
+# Plan multicore
+# We only need three cores (we have three data splits)
+options(parallelly.fork.enable = TRUE, future.rng.onMisuse = "ignore")
+plan(multicore, workers = 3)
 
 # Weeks start on Mondays
 options(lubridate.week.start = 1)
