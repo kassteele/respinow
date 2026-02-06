@@ -64,11 +64,11 @@ fit_icosari_sari_split <- future_map2(
   .x = data_icosari_sari_split,
   .y = fun_fit_model_split,
   .f = \(data, fun_fit_model) fun_fit_model(data))
-fit_survstat_influenza_split <- future_map2(
-  .x = data_survstat_influenza_split,
-  .y = fun_fit_model_split,
-  .f = \(data, fun_fit_model) fun_fit_model(data))
-fit_survstat_rsv_split <- future_map2(
-  .x = data_survstat_rsv_split,
-  .y = fun_fit_model_split,
-  .f = \(data, fun_fit_model) fun_fit_model(data))
+# fit_survstat_influenza_split <- future_map2(
+#   .x = data_survstat_influenza_split,
+#   .y = fun_fit_model_split,
+#   .f = \(data, fun_fit_model) fun_fit_model(data))
+# fit_survstat_rsv_split <- future_map2(
+#   .x = data_survstat_rsv_split,
+#   .y = fun_fit_model_split,
+#   .f = \(data, fun_fit_model) fun_fit_model(data))
